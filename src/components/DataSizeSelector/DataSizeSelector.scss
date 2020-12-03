@@ -1,0 +1,19 @@
+.data-size-selector-wrapper {
+  margin: 0 auto;
+    button {
+    background: white;
+    cursor: pointer;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+  }
+  .btn-big {
+    margin-right: 10px;
+    background: #fb667a;
+  }
+  .btn-small {
+    background: #7CFC00;
+  }
+
+}

@@ -1,7 +1,9 @@
 .table {
   display: table;
+  width: 100%;
   &-header {
     display: table-header-group;
+    user-select: none;
     &__cell {
       display: table-cell;
       font-weight: bold;

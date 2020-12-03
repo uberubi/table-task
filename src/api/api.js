@@ -7,12 +7,12 @@ const instance = axios.create({
 export const dataAPI = {
   async getData(size) {
     try {
-      const data = await instance.get(
+      const { data } = await instance.get(
         `?rows=${size}&id={number|${size}}&firstName={firstName}&lastName={lastName}&email={email}&phone={phone|(xxx)xxx-xx-xx}&address={addressObject}&description={lorem|32}`
       );
       return data;
     } catch (err) {
-      console.log(err);
+      throw new Error(err);
     }
   },
 };

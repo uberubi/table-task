@@ -1,6 +1,6 @@
-import "./SelectedItem.scss";
+import "./SelectedItemCard.scss";
 
-const SelectedItem = ({ item }) => {
+const SelectedItemCard = ({ item }) => {
   return (
     <div className="selected-item">
       <p>
@@ -17,4 +17,4 @@ const SelectedItem = ({ item }) => {
   );
 };
 
-export default SelectedItem;
+export default SelectedItemCard;
