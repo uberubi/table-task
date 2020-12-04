@@ -1,6 +1,6 @@
 import "./Pagination.scss";
 
-const Pagination = ({ itemsPerPage, totalItems, onPaginate }) => {
+const Pagination = ({ itemsPerPage, totalItems, handlePagination }) => {
   const pageNumbers = [];
   for (let i = 1; i <= Math.ceil(totalItems / itemsPerPage); i++) {
     pageNumbers.push(i);
@@ -10,7 +10,7 @@ const Pagination = ({ itemsPerPage, totalItems, onPaginate }) => {
       <ul className="pagination">
         {pageNumbers.map((num) => (
           <li key={num} className="page-item">
-            <button onClick={() => onPaginate(num)} className="page-link">
+            <button onClick={() => handlePagination(num)} className="page-link">
               {num}
             </button>
           </li>

@@ -87,7 +87,7 @@ const App = () => {
     setItems(itemsCopy);
   };
 
-  const onPaginate = (pageNumber) => setCurrentPage(pageNumber);
+  const handlePagination = (pageNumber) => setCurrentPage(pageNumber);
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -101,7 +101,7 @@ const App = () => {
         <Pagination
           itemsPerPage={itemsPerPage}
           totalItems={items.length}
-          onPaginate={onPaginate}
+          handlePagination={handlePagination}
         />
       )}
       {loading ? (
