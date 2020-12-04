@@ -8,6 +8,7 @@ import Table from "./components/Table/Table";
 import sortByOrder from "./utils/sortByOrder";
 import AddItemForm from "./components/AddItemForm/AddItemForm";
 import Loader from "./components/Loader/Loader";
+import Search from "./components/Search/Search";
 
 const App = () => {
   const [items, setItems] = useState([]);
@@ -17,6 +18,7 @@ const App = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(50);
+  const [search, setSearch] = useState("");
   const [newItem, setNewItem] = useState({
     id: "",
     firstName: "",
@@ -26,8 +28,7 @@ const App = () => {
     description: "",
     address: {},
   });
-  console.log(newItem);
-  console.log(items);
+
   const fetchData = async (size) => {
     setLoading(true);
     setSelectedItem(null);
@@ -52,6 +53,24 @@ const App = () => {
     const dataSize = e.target.id;
     fetchData(dataSize);
     setCurrentPage(1);
+  };
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const handleSearchSubmit = () => {
+    if (search === "") return;
+    const itemsCopy = [...items];
+
+    const filteredItems = itemsCopy.filter((item) =>
+      [item.firstName, item.lastName, item.email, item.phone].some((field) =>
+        String(field).toLowerCase().includes(search.toLowerCase())
+      )
+    );
+    setItems(filteredItems);
+    setCurrentPage(1);
+    setSearch("");
   };
 
   const handleChangeAddField = (e) => {
@@ -95,6 +114,11 @@ const App = () => {
                 item={newItem}
                 handleSubmitAddForm={handleSubmitAddForm}
                 handleChangeAddField={handleChangeAddField}
+              />
+              <Search
+                search={search}
+                handleSearch={handleSearch}
+                handleSearchSubmit={handleSearchSubmit}
               />
               <Table
                 items={currentItems}
